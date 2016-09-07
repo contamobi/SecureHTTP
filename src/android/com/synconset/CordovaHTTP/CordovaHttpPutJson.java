@@ -29,8 +29,6 @@ public class CordovaHttpPutJson extends CordovaHttp implements Runnable {
             HttpRequest request = HttpRequest.put(this.getUrlString());
             this.setupSecurity(request);
             request.headers(this.getHeaders());
-            request.acceptJson();
-            request.contentType(HttpRequest.CONTENT_TYPE_JSON);
             request.send(getJsonObject().toString());
             int code = request.code();
             String body = request.body(CHARSET);
