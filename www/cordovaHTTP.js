@@ -21,27 +21,27 @@ var http = {
     },
     post: function(url, params, headers, success, failure) {
 
-        if (typeof params === "object") {
+        if (typeof params === "object" && params.constructor !== Array) {
             return exec(success, failure, "CordovaHttpPlugin", "postJson", [url, params, headers]);
         }
-        return exec(success, failure, "CordovaHttpPlugin", "post", [url, params, headers]);
+        return exec(success, failure, "CordovaHttpPlugin", "post", [url, params[0], headers]);
     },
     get: function(url, params, headers, success, failure) {
         return exec(success, failure, "CordovaHttpPlugin", "get", [url, params, headers]);
     },
     put: function (url, params, headers, success, failure) {
 
-        if (typeof params === "object") {
+        if (typeof params === "object" && params.constructor !== Array) {
             return exec(success, failure, "CordovaHttpPlugin", "putJson", [url, params, headers]);
         }
-        return exec(success, failure, "CordovaHttpPlugin", "put", [url, params, headers]);
+        return exec(success, failure, "CordovaHttpPlugin", "put", [url, params[0], headers]);
     },
     delete: function (url, params, headers, success, failure) {
 
-        if (typeof params === "delete") {
+        if (typeof params === "object" && params.constructor !== Array) {
             return exec(success, failure, "CordovaHttpPlugin", "deleteJson", [url, params, headers]);
         }
-        return exec(success, failure, "CordovaHttpPlugin", "delete", [url, params, headers]);
+        return exec(success, failure, "CordovaHttpPlugin", "delete", [url, params[0], headers]);
     },
     uploadFile: function(url, params, headers, filePath, name, success, failure) {
         return exec(success, failure, "CordovaHttpPlugin", "uploadFile", [url, params, headers, filePath, name]);
