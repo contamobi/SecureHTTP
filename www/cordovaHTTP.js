@@ -21,7 +21,7 @@ var http = {
     },
     post: function(url, params, headers, success, failure) {
 
-        if (typeof params === "object") {
+        if (typeof params === "object") {console.log(params);
             return exec(success, failure, "CordovaHttpPlugin", "postJson", [url, params, headers]);
         }
         return exec(success, failure, "CordovaHttpPlugin", "post", [url, params, headers]);
