@@ -18,7 +18,7 @@ import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
  
 public class CordovaHttpDeleteJson extends CordovaHttp implements Runnable {
-    public CordovaHttpDelete(String urlString, JSONObject jsonObj, Map<String, String> headers, CallbackContext callbackContext) {
+    public CordovaHttpDeleteJson(String urlString, JSONObject jsonObj, Map<String, String> headers, CallbackContext callbackContext) {
         super(urlString, jsonObj, headers, callbackContext);
     }
     
