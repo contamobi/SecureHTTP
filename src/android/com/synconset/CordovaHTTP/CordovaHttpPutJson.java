@@ -6,6 +6,11 @@ package com.synconset;
 import java.net.UnknownHostException;
 import java.util.Map;
 
+import java.lang.Object;
+import java.io.InputStream
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+
 import org.apache.cordova.CallbackContext;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +34,10 @@ public class CordovaHttpPutJson extends CordovaHttp implements Runnable {
             HttpRequest request = HttpRequest.put(this.getUrlString());
             this.setupSecurity(request);
             request.headers(this.getHeaders());
-            request.send(getJsonObject().toString());
+            request.accept("application/json");
+            request.contentType(HttpRequest.CONTENT_TYPE_JSON);
+            InputStream payload = new ByteArrayInputStream(getJsonObject().toString().getBytes(StandardCharsets.UTF_8));
+            request.send(payload);
             int code = request.code();
             String body = request.body(CHARSET);
             JSONObject response = new JSONObject();
