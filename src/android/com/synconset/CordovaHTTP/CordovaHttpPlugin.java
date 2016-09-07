@@ -208,6 +208,17 @@ public class CordovaHttpPlugin extends CordovaPlugin {
         return newMap;
     }
 
+    private HashMap<String, String> getStringMapFromJSONObject(JSONObject object) throws JSONException {
+        HashMap<String, String> map = new HashMap<String, String>();
+        Iterator<?> i = object.keys();
+
+        while (i.hasNext()) {
+            String key = (String)i.next();
+            map.put(key, object.getString(key));
+        }
+        return map;
+    }
+
     private HashMap<String, Object> getMapFromJSONObject(JSONObject object) throws JSONException {
         HashMap<String, Object> map = new HashMap<String, Object>();
         Iterator<?> i = object.keys();
