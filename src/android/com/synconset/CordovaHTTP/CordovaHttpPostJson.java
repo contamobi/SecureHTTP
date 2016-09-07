@@ -5,7 +5,7 @@ package com.synconset;
 
 import java.io.Console;
 import java.lang.Object;
-import java.io.InputStream
+import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 
