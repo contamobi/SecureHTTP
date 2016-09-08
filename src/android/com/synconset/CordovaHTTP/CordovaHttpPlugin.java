@@ -102,6 +102,7 @@ public class CordovaHttpPlugin extends CordovaPlugin {
             JSONObject headers = args.getJSONObject(2);
             HashMap<String, String> headersMap = this.getStringMapFromJSONObject(headers);
             CordovaHttpDeleteJson deleteJson = new CordovaHttpDeleteJson(urlString, jsonObj, headersMap, callbackContext);
+            cordova.getThreadPool().execute(deleteJson);
         } else if (action.equals("useBasicAuth")) {
             String username = args.getString(0);
             String password = args.getString(1);
