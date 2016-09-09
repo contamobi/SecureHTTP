@@ -36,8 +36,6 @@ public class CordovaHttpDeleteJson extends CordovaHttp implements Runnable {
             request.headers(this.getHeaders());
             request.accept("application/json");
             request.contentType(HttpRequest.CONTENT_TYPE_JSON);
-            InputStream payload = new ByteArrayInputStream(getJsonObject().toString().getBytes(StandardCharsets.UTF_8));
-            request.send(payload);
             int code = request.code();
             String body = request.body(CHARSET);
             JSONObject response = new JSONObject();
@@ -57,7 +55,7 @@ public class CordovaHttpDeleteJson extends CordovaHttp implements Runnable {
             } else if (e.getCause() instanceof SSLHandshakeException) {
                 this.respondWithError("SSL handshake failed");
             } else {
-                this.respondWithError("There was an error with the request");
+                this.respondWithError("There was an error with the request" + e.getMessage());
             }
         }
     }
