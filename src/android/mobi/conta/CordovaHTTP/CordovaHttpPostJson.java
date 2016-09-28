@@ -7,6 +7,7 @@ import java.io.Console;
 import java.lang.Object;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
 
 import java.net.UnknownHostException;
 import java.util.Map;
@@ -51,6 +52,8 @@ public class CordovaHttpPostJson extends CordovaHttp implements Runnable {
             }
         } catch (JSONException e) {
             this.respondWithError("There was an error generating the response");
+        } catch (UnsupportedEncodingException e) {
+            this.respondWithError("Unsupported encoding utf-8");
         }  catch (HttpRequestException e) {
             if (e.getCause() instanceof UnknownHostException) {
                 this.respondWithError(0, "The host could not be resolved");
