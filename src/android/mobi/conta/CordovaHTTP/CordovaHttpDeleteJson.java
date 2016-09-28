@@ -9,8 +9,6 @@ import java.util.Map;
 import java.lang.Object;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
-
 
 import org.apache.cordova.CallbackContext;
 import org.json.JSONException;
